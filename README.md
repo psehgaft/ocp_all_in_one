@@ -17,3 +17,11 @@ Nota importante: Mantener esta clave privada muy privada. Ésta es la base de to
 ``` openssl
 openssl genrsa -out rootCA.key 2048 -des3
 ```
+
+Se pedirá que se introduzca una contraseña, y desde entonces se retará a introducir la contraseña cada vez que se use la clave. Claro, si olvidads la clave tendrás que hacer todo esto de nuevo.
+
+El siguiente paso es autofirmar este certificado
+
+``` openssl
+openssl req -x509 -new -nodes -key rootCA.key -days 1024 -out rootCA.pem
+```
