@@ -50,4 +50,34 @@ total 176
  8 -rw-r--r
 ```
 
+## Crear un certificado (hacer una vez por dispositivo)
 
+Será necesario seguir este proceso para cada dispositivo en el que se desee instalar un certificado confiable. Primero, al igual que con el paso del CA raíz, se necesita una clave privada (diferente de la del CA raíz).
+
+``` openssl
+openssl genrsa -out device.key 2048
+```
+
+Una vez creada la clave, se generará la solicitud de firmado de certificado:
+
+``` openssl
+openssl req -new -key device.key -out device.csr
+```
+
+El sistema realizará varias preguntas (País, Región/Provincia, etc.). Responder según corresponda. Sin embargo, la pregunta importante es common-name.
+
+``` openssl
+Common Name (eg, YOUR name) []: 10.0.0.1
+```
+
+Lo que se ve en el campo de la dirección del navegador cuando se accede a tu dispositivo debe ser lo que se ponga bajo el common name, incluso si es una dirección IP. Sí, incluso una dirección IP (IPv4 o IPv6) funciona como common name.
+
+Si no se corresponden, incluso un certificado firmado adecuadamente no se validará adecuadamente, y se obtendrá el error de que “No se puede verificar la autenticidad”.
+
+Una vez hecho esto, se firmará el CSR, lo que requiere la clave CA raíz:
+
+``` openssl
+openssl x509 -req -in device.csr -CA root.pem -CAkey root.key -CAcreateserial -out device.crt -days 500
+```
+
+Esto crea un certificado autofirmado llamado device.crt que es válido durante 500 días (se puede ajustar el número de días, claro, pero no tiene sentido que sea mayor que el del certificado raíz).
