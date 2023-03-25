@@ -25,3 +25,11 @@ El siguiente paso es autofirmar este certificado
 ``` openssl
 openssl req -x509 -new -nodes -key rootCA.key -days 1024 -out rootCA.pem
 ```
+
+Lo que comenzará un script interactivo que preguntará información. Como se muestra acontinuacion:
+
+``` openssl
+
+```
+
+
