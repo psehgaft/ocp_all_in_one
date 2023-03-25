@@ -29,7 +29,25 @@ openssl req -x509 -new -nodes -key rootCA.key -days 1024 -out rootCA.pem
 Lo que comenzará un script interactivo que preguntará información. Como se muestra acontinuacion:
 
 ``` openssl
-
+tzulkin@Franciscos-MBP .ssh % openssl req -x509 -new -nodes -key rootCA.key -days 1024 -out rootCA.pem
+Enter pass phrase for rootCA.key:
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) []:MX
+State or Province Name (full name) []:CDMX
+Locality Name (eg, city) []:CDMX
+Organization Name (eg, company) []:Delibanez
+Organizational Unit Name (eg, section) []:it
+Common Name (eg, fully qualified host name) []:delibanezit.com
+Email Address []:jazmin@delibanezit.com
+tzulkin@Franciscos-MBP .ssh % ls -lrs                                                                 
+total 176
+ 8 -rw-r--r
 ```
 
 
