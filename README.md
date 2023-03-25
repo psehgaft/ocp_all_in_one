@@ -1,3 +1,11 @@
+# Install KVM
+
+Prerequisites
+Minimal Installed RHEL 9 with Desktop Environment
+Sudo user with admin rights
+Local Yum Repository or Red Hat Subscription
+Internet Connectivity (for Red Hat Subscription)
+
 # ocp_all_in_one
 
 ## Crear el Certificado Raíz (se hace una vez)
