@@ -6,6 +6,6 @@ Crear el certificado raíz es fácil y se hace rápidamente. Con estos sencillos
 ## Crear la clave raíz
 El primer paso es crear la clave raíz privada que sólo requiere un paso. En el ejemplo de abajo, estoy creando una clave de 2048 bits:
 
-´´´ openssl
+``` openssl
 openssl genrsa -out rootCA.key 2048
-´´´
+```
